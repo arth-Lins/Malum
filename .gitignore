@@ -6,3 +6,9 @@ frontend/.next/
 frontend/test-results/
 frontend/playwright-report/
 frontend/.env.local
+
+# Python generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+backend/.venv/
