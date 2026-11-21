@@ -1,0 +1,4 @@
+data,etapa,produto,volume_produzido,materia_prima_entrada,materia_prima_saida_util,energia_kwh,agua_litros,custo_total_brl,turno
+2026-08-01,Corte,Mesa,80,114,96,42,120,842,Manhã
+2026-08-02,Corte,Mesa,75,112,91,45,118,837,Tarde
+2026-08-03,Montagem,Mesa,92,96,90,31,377,650,Manhã
