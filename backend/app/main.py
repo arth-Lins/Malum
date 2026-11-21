@@ -40,7 +40,8 @@ async def analyze_upload(request: AnalyzeRequest):
     try: explanation=await get_deepseek(settings).explain(request.focus,evidence,laya); warning=None
     except DeepSeekUnavailable: explanation=None; warning="A classificação foi concluída, mas a explicação textual não pôde ser gerada. Tente novamente."
     result=response_from_evidence(request.focus,evidence,laya,explanation,warning)
-    record=ChatRecord(id=str(uuid4()),title=request.focus,analysis=result,messages=[ChatMessage(id=str(uuid4()),role="bot",text=explanation or warning or "Indicadores calculados.")]); chats[record.id]=record
+    analysis_id=str(uuid4()); result.analysis_id=analysis_id
+    record=ChatRecord(id=analysis_id,title=request.focus,analysis=result,messages=[ChatMessage(id=str(uuid4()),role="bot",text=explanation or warning or "Indicadores calculados.")]); chats[record.id]=record
     return result
 
 @app.post("/chat", response_model=ChatMessage)

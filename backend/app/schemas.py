@@ -51,6 +51,7 @@ class LayaResult(BaseModel):
 
 
 class AnalysisResponse(BaseModel):
+    analysis_id: str | None = Field(default=None, serialization_alias="analysisId")
     dataset: dict
     focus: str
     findings: list[Finding]
