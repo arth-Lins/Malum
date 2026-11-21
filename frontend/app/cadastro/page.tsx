@@ -1,3 +1,20 @@
 'use client';
-import {useRouter} from 'next/navigation'; import Link from 'next/link'; import {useState} from 'react'; import {AuthShell} from '../entrar/page';
-export default function Cadastro(){const r=useRouter(),[v,setV]=useState({nome:'',email:'',senha:''}),[error,setError]=useState(''); const update=(k:keyof typeof v)=>(e:React.ChangeEvent<HTMLInputElement>)=>setV({...v,[k]:e.target.value}); function submit(e:React.FormEvent){e.preventDefault(); if(!v.nome||!v.email||!v.senha)return setError('Todos os campos são obrigatórios.');if(!/^\S+@\S+\.\S+$/.test(v.email))return setError('Informe um e-mail válido.');r.push('/precos')}return <AuthShell title="Comece a enxergar melhor"><form onSubmit={submit} noValidate><label>Nome<input aria-label="Nome" value={v.nome} onChange={update('nome')}/></label><label>E-mail<input aria-label="E-mail" value={v.email} onChange={update('email')} type="email"/></label><label>Senha<input aria-label="Senha" value={v.senha} onChange={update('senha')} type="password"/></label>{error&&<p className="error" role="alert">{error}</p>}<button className="button" type="submit">Ver planos <span>↗</span></button></form><p className="demo-notice">Ambiente de demonstração. Nenhum dado é armazenado.</p><p>Já tem uma conta? <Link href="/entrar">Entre</Link></p></AuthShell>}
+
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { AuthShell } from '../entrar/page';
+
+export default function Cadastro() {
+  const router = useRouter();
+  const [values, setValues] = useState({ nome: '', email: '', senha: '' });
+  const [error, setError] = useState('');
+  function update(field: keyof typeof values) { return (event: React.ChangeEvent<HTMLInputElement>) => setValues({ ...values, [field]: event.target.value }); }
+  function submit(event: React.FormEvent) {
+    event.preventDefault();
+    if (!values.nome || !values.email || !values.senha) return setError('Todos os campos são obrigatórios.');
+    if (!/^\S+@\S+\.\S+$/.test(values.email)) return setError('Informe um e-mail válido.');
+    router.push('/app');
+  }
+  return <AuthShell title="Crie sua conta e comece"><form onSubmit={submit} noValidate><label>Nome<input aria-label="Nome" value={values.nome} onChange={update('nome')}/></label><label>E-mail<input aria-label="E-mail" value={values.email} onChange={update('email')} type="email"/></label><label>Senha<input aria-label="Senha" value={values.senha} onChange={update('senha')} type="password"/></label>{error && <p className="error" role="alert">{error}</p>}<button className="button utility-action" type="submit">Ir para minha análise <span>↗</span></button></form><p className="demo-notice">Ambiente de demonstração. Nenhum dado é armazenado.</p><p>Já tem uma conta? <Link href="/entrar">Entre</Link></p></AuthShell>;
+}
