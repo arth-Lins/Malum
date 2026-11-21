@@ -1,0 +1,4 @@
+data,etapa,volume_produzido,materia_prima_entrada,energia_kwh,custo_total_brl
+2026-08-01,Corte,120,128,15,340
+2026-08-02,Corte,120,168,16,491
+2026-08-03,Acabamento,110,114,13,303

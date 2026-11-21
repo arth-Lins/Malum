@@ -1,0 +1,4 @@
+data,etapa,volume_produzido,materia_prima_entrada,energia_kwh,agua_litros,custo_total_brl
+2026-08-01,Preparo,200,215,32,540,810
+2026-08-02,Preparo,200,280,35,570,1120
+2026-08-03,Higienização,190,195,18,1100,620
